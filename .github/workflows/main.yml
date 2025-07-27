@@ -29,7 +29,7 @@ jobs:
             - name: compileth
               run: |
                   ls -la
-                  chmod +x elc
+                  chmod +x elc tools/gen_scratch_sb3.sh
                   ./elc -scratch3 patata.c > patata.json
                   ./tools/gen_scratch_sb3.sh patata.json -name out
             - name: upload artifact to internet archive ig
