@@ -3,7 +3,7 @@ name: build sb3
 on: push
 
 jobs:
-    eic:
+    elc:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -12,23 +12,23 @@ jobs:
               with:
                   repository: shinh/elvm
                   path: elvm
-            - name: build eic
+            - name: build elc
               run: cd elvm && make out/elc && cp ./out/elc .. && cp -r ./tools/ .. && cd ..
             - name: upload everythinh
               uses: actions/upload-artifact@v4
               with:
-                  name: eic
+                  name: elc
                   path: ./
     build:
         runs-on: ubuntu-latest
-        needs: eic
+        needs: elc
         steps:
             - uses: actions/download-artifact@v4 # this also checks out our whole repo cuz we uploaded everything on . that we had
               with:
-                  name: eic
+                  name: elc
             - name: compileth
               run: |
-                  ./eic -scratch3 patata.c > patata.json
+                  ./elc -scratch3 patata.c > patata.json
                   ./tools/gen_scratch_sb3.sh patata.json -name out
             - name: upload artifact to internet archive ig
               uses: actions/upload-artifact@v4
