@@ -1,7 +1,4 @@
 
-
-// You can run a larger C program (FizzBuzz) by changing this condition.
-// Note you may not want to do this for slower backends (e.g., Brainfuck).
 #if 1
 int putchar(int c);
 
