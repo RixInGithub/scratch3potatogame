@@ -29,7 +29,7 @@ jobs:
             - name: compileth
               run: |
                   ls -la
-                  chmod +x elc tools/gen_scratch_sb3.sh
+                  chmod +x 8cc elc tools/gen_scratch_sb3.sh
                   ./8cc patata.c -S -I. -Ilibc -o patata.eir
                   ./elc -scratch3 patata.eir > patata.json
                   ./tools/gen_scratch_sb3.sh patata.json -name out
