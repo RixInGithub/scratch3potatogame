@@ -3,7 +3,7 @@ name: build sb3
 on: push
 
 jobs:
-    elc:
+    tools:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -12,12 +12,12 @@ jobs:
               with:
                   repository: shinh/elvm
                   path: elvm
-            - name: build elc
-              run: npm install -g scratch-vm && cd elvm && make out/elc && cp ./out/elc .. && cp -r ./tools/ .. && cd ..
+            - name: build elc + 8cc
+              run: cd elvm && make out/8cc out/elc && cp ./out/* .. && cp -r ./tools/ .. && cd ..
             - name: upload everythinh
               uses: actions/upload-artifact@v4
               with:
-                  name: elc
+                  name: cwd
                   path: ./
     build:
         runs-on: ubuntu-latest
@@ -25,12 +25,13 @@ jobs:
         steps:
             - uses: actions/download-artifact@v4 # this also checks out our whole repo cuz we uploaded everything on . that we had
               with:
-                  name: elc
+                  name: cwd
             - name: compileth
               run: |
                   ls -la
                   chmod +x elc tools/gen_scratch_sb3.sh
-                  ./elc -scratch3 patata.c > patata.json
+                  ./8cc patata.c -S -I. -Ilibc -o patata.eir
+                  ./elc -scratch3 patata.eir > patata.json
                   ./tools/gen_scratch_sb3.sh patata.json -name out
             - name: upload artifact to internet archive ig
               uses: actions/upload-artifact@v4
