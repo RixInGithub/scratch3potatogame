@@ -13,7 +13,7 @@ jobs:
                   repository: shinh/elvm
                   path: elvm
             - name: build elc + 8cc
-              run: cd elvm && make out/8cc out/elc && cp ./out/* .. && cp -r ./tools/ .. && cd ..
+              run: cd elvm && make out/8cc out/elc && cp ./out/8cc ./out/elc .. && cp -r ./tools/ .. && cd ..
             - name: upload everythinh
               uses: actions/upload-artifact@v4
               with:
@@ -32,9 +32,9 @@ jobs:
                   chmod +x 8cc elc tools/gen_scratch_sb3.sh
                   ./8cc patata.c -S -I. -Ilibc -o patata.eir
                   ./elc -scratch3 patata.eir > patata.json
-                  ./tools/gen_scratch_sb3.sh patata.json -name out
+                  ./tools/gen_scratch_sb3.sh patata.json -name ALLMIGHTYPOTATOGAME
             - name: upload artifact to internet archive ig
               uses: actions/upload-artifact@v4
               with:
-                  name: output
-                  path: ./
+                  name: ALLMIGHTYPOTATOGAME
+                  path: ALLMIGHTYPOTATOGAME.sb3
