@@ -3,7 +3,7 @@ name: build sb3
 on: push
 
 jobs:
-    tools:
+    thetools:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
@@ -21,7 +21,7 @@ jobs:
                   path: ./
     build:
         runs-on: ubuntu-latest
-        needs: elc
+        needs: thetools
         steps:
             - uses: actions/download-artifact@v4 # this also checks out our whole repo cuz we uploaded everything on . that we had
               with:
