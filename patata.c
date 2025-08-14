@@ -15,13 +15,13 @@ int main() {
 	printf(TAB "7. to input unicode characters use the unicode character in the instructions section instead of \"\\\"\n"); // "＼"
 	printf(TAB "8. all the instructions are within the game\n");
 	printf("\n");
-	printf("input anything to begin the game.");
+	printf("input anything to begin the game...");
 	(void)getchar();
 	// this is just me bein silly and testing out the capabilities of c on scratch
 	char*sep=malloc(sizeof(char)*(SEPSIZ+1));
 	memset(sep,"-"[0],SEPSIZ);
 	sep[SEPSIZ+1]=0;
-	printf("\n\n%s\n\n",sep);
+	printf("\n%s\n",sep);
 	printf("please give yourself a name before we continue:");
 	char*name=malloc(sizeof(char));
 	name[0]=0;
@@ -36,7 +36,7 @@ int main() {
 		name=tmp;
 	}
 	printf("\n\nawesome choice, my dear %s! lets start.", name);
-	printf("\n\n%s\n\n",sep);
+	printf("\n%s\n",sep);
 	free(sep);
 	return 0;
 }

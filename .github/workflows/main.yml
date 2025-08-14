@@ -29,11 +29,9 @@ jobs:
             - name: compileth
               run: |
                   chmod +x 8cc elc tools/gen_scratch_sb3.sh
-                  ./8cc patata.c -S -I. -I./elvm/libc -o patata.eir
-                  ./elc -scratch3 patata.eir > patata.json
-                  ./tools/gen_scratch_sb3.sh patata.json -name ALLMIGHTYPOTATOGAME
+                  ./8cc patata.c -S -I. -I./elvm/libc -o patata.eir && ./elc -scratch3 patata.eir > patata.json && ./tools/gen_scratch_sb3.sh patata.json -name ALLMIGHTYPOTATOGAME
                   unzip ALLMIGHTYPOTATOGAME.sb3 -d ALLMIGHTYPOTATOGAME
-            - name: upload artifact to internet archive ig as plain zip/sb3
+            - name: upload artifact to internet archive as plain zip/sb3 ig
               uses: actions/upload-artifact@v4
               with:
                   name: ALLMIGHTYPOTATOGAME
