@@ -32,8 +32,9 @@ jobs:
                   ./8cc patata.c -S -I. -I./elvm/libc -o patata.eir
                   ./elc -scratch3 patata.eir > patata.json
                   ./tools/gen_scratch_sb3.sh patata.json -name ALLMIGHTYPOTATOGAME
-            - name: upload artifact to internet archive ig
+                  unzip ALLMIGHTYPOTATOGAME.sb3 -d ALLMIGHTYPOTATOGAME
+            - name: upload artifact to internet archive ig as plain zip/sb3
               uses: actions/upload-artifact@v4
               with:
                   name: ALLMIGHTYPOTATOGAME
-                  path: ALLMIGHTYPOTATOGAME.sb3
+                  path: ALLMIGHTYPOTATOGAME/*
