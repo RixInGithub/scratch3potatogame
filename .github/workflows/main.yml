@@ -13,7 +13,7 @@ jobs:
                   repository: shinh/elvm
                   path: elvm
             - name: build elc + 8cc
-              run: cd elvm && make out/8cc out/elc && cp ./out/8cc ./out/elc .. && cp ./tools/gen_scratch_sb3.sh .. && cp -r ./libc/ ../libc/ && cd ..
+              run: cd elvm && make out/8cc out/elc && cp ./out/8cc ./out/elc .. && cp ./tools/gen_scratch_sb3.sh ../tools/ && cp -r ./libc/ ../libc/ && cd ..
             - name: upload everythinh
               uses: actions/upload-artifact@v4
               with:
