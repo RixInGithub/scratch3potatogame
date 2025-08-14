@@ -27,6 +27,7 @@ int main() {
 	name[0]=0;
 	char c;
 	while ((c=getchar())!=10) {
+		printf("%d\n",c);
 		int len = strlen(name)+2;
 		char*tmp=malloc(sizeof(char)*len); // i will not believe that sizeof(char)==1, especially in funky diy compiler land
 		strcpy(tmp,name);
